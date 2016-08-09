@@ -1,0 +1,56 @@
+{
+  "name": "generator-cocos-starter-kit",
+  "version": "1.0.0",
+  "description": "Boilerplate for cocos2d-x javascript games",
+  "homepage": "https://github.com/reo7sp/cocos-starter-kit",
+  "author": {
+    "name": "Oleg Morozenkov",
+    "email": "a@reo7sp.ru",
+    "url": "http://reo7sp.ru"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "reo",
+    "web",
+    "start",
+    "starter",
+    "kit",
+    "webapp",
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "extend": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.23.0"
+  },
+  "devDependencies": {
+    "yeoman-test": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "eslint": "^2.1.0",
+    "eslint-config-xo-space": "^0.13.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "reo7sp/generator-cocos-starter-kit",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
+}
