@@ -75,14 +75,18 @@ module.exports = MyBase.extend({
   },
 
   gitClone: function () {
-    this.remote('reo7sp', 'cocos-starter-kit', function (err, remote) {
+    this.remote('reo7sp', 'cocos-starter-kit', function (err, remote, files) {
       if (err) {
         throw err;
       }
 
-      remote.directory('.', this.destinationPath());
+      files.forEach(function (file) {
+        if (!['package.json', 'LICENSE', 'README.md'].includes(file)) {
+          remote.bulkCopy(file, this.destinationPath(file));
+        }
+      }.bind(this));
 
-      var packageJson = this.fs.readJSON(this.destinationPath('package.json'));
+      var packageJson = JSON.parse(fs.readFileSync(remote.cachePath + '/package.json'));
       extend(packageJson, {
         name: this.props.name,
         description: '',
@@ -92,10 +96,6 @@ module.exports = MyBase.extend({
         delete packageJson[it];
       });
       this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
-
-      ['LICENSE', 'README.md'].forEach(function (it) {
-        this.fs.delete(this.destinationPath(it));
-      }.bind(this));
     }.bind(this));
   },
 
